@@ -8,8 +8,9 @@ pip3 install --upgrade --user pip wheel numpy pillow matplotlib
 printf "\n#Python\nif [ -d \"$HOME/.local/bin\" ] ; then\n    PATH=\"$HOME/.local/bin:$PATH\"\nfi" >> ~/.profile
 
 #Install tensorflow 1.8
-source .profile
-pip3 install --upgrade --user tensorflow-1.8.0-cp35-cp35m-linux_aarch64.whl
+source ~/.profile
+TENSORFLOW_PATH="$(dirname $0)/tensorflow-1.8.0-cp35-cp35m-linux_aarch64.whl"
+pip3 install --upgrade --user ${TENSORFLOW_PATH}
 
 #Reboot
 sudo shutdown -h now
