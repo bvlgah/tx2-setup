@@ -1,27 +1,20 @@
 #!/bin/bash
 
-#Install curl
-sudo apt install curl
-
 # Create the root directory for OpenCV.
-mkdir -p ~/opencv
-
-# Download OpenCV 3.3.1 and extra modules.
-curl https://codeload.github.com/opencv/opencv/zip/3.3.1 -o  ~/opencv/opencv-3.3.1.zip ; \
-    curl https://codeload.github.com/opencv/opencv_contrib/zip/3.3.1 -o ~/opencv/opencv_contrib-3.3.1.zip
+DIR=${HOME}/opencv
+mkdir ${DIR}
 
 # Unzip
-cd ~/opencv
-unzip opencv-3.3.1.zip ; unzip opencv_contrib-3.3.1.zip
+unzip opencv-3.3.1.zip -d ${DIR}; unzip opencv_contrib-3.3.1.zip -d ${DIR}
 
 #Create a directory for hold binary files
-cd opencv-3.3.1 && mkdir release && cd release
+cd ${DIR}/opencv-3.3.1 && mkdir release && cd release
 
 #Instal dependencies of OpenCV
-sudo apt-get install build-essential
-sudo apt-get install cmake git libgtk2.0-dev pkg-config \
+sudo apt-get install -y build-essential
+sudo apt-get install -y cmake git libgtk2.0-dev pkg-config \
     libavcodec-dev libavformat-dev libswscale-dev
-sudo apt-get install python3-dev python3-numpy libtbb2 \
+sudo apt-get install -y python3-dev python3-numpy libtbb2 \
     libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev \
     libdc1394-22-dev
 
